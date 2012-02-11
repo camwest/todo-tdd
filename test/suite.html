@@ -1,0 +1,36 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Mocha Tests</title>
+  <link rel="stylesheet" href="../node_modules/mocha/mocha.css" />
+
+  <!-- implementation libraries -->
+  <script src="../vendor/jquery.js"></script>
+  <script src="../vendor/json2.js"></script>
+  <script src="../vendor/underscore.js"></script>
+  <script src="../vendor/backbone.js"></script>
+  <script src="../vendor/backbone-localstorage.js"></script>
+
+  <!-- implementation code -->
+  <script src="../src/todo_view.js"></script>
+
+  <!-- testing libraries -->
+  <script src="../vendor/expect.js"></script>
+  <script src="../node_modules/mocha/mocha.js"></script>
+
+  <!-- testing setup -->
+  <script>
+    mocha.setup('bdd')
+
+    $(function() {
+      mocha.run()
+    })
+  </script>
+
+  <!-- test code -->
+  <script src="todo_view_test.js"></script>
+</head>
+<body>
+  <div id="mocha"></div>
+</body>
+</html>

@@ -8,7 +8,6 @@
     "test": "make test"
   },
   "devDependencies": {
-    "should": "*",
     "mocha": "*"
   }
 }
