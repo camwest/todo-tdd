@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Todo TDD</title>
+    <link href="css/todos.css" media="all" rel="stylesheet" type="text/css"/>
+  </head>
+
+  <body>
+
+    <!-- Todo App Interface -->
+
+    <div id="todoapp">
+
+      <div class="title">
+        <h1>Todos</h1>
+      </div>
+
+      <div class="content">
+
+        <div id="create-todo">
+          <input id="new-todo" placeholder="What needs to be done?" type="text" />
+          <span class="ui-tooltip-top" style="display:none;">Press Enter to save this task</span>
+        </div>
+
+        <div id="todos">
+          <input class="check mark-all-done" type="checkbox"/>
+          <label for="check-all">Mark all as complete</label>
+          <ul id="todo-list">
+            <li>
+            <div class="todo done">
+              <div class="display">
+                <input class="check" type="checkbox" checked="checked" />
+                <label class="todo-content">This is a done Todo</label>
+                <span class="todo-destroy"></span>
+              </div>
+              <div class="edit">
+                <input class="todo-input" type="text" value="This is an editing Todo" />
+              </div>
+            </div>
+            </li>
+
+            <li class="editing">
+            <div class="todo">
+              <div class="edit">
+                <input class="todo-input" type="text" value="This is an editing Todo" />
+              </div>
+            </div>
+            </li>
+
+            <li>
+            <div class="todo">
+              <div class="display">
+                <input class="check" type="checkbox" />
+                <label class="todo-content">This is a normal todo</label>
+                <span class="todo-destroy"></span>
+              </div>
+            </div>
+            </li>
+          </ul>
+        </div>
+
+        <div id="todo-stats">
+          <span class="todo-count">
+            <span class="number">2</span>
+            <span class="word">items</span> left.
+          </span>
+
+          <span class="todo-clear">
+            <a href="#">
+              Clear <span class="number-done">1</span>
+              completed <span class="word-done">item</span>
+            </a>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div id="credits">
+      Created by
+      <br />
+      <a href="http://twitter.com/camwest">Cameron Westland</a>
+    </div>
+  </body>
+</html>

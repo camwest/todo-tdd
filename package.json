@@ -1,0 +1,14 @@
+{
+  "name": "todo-tdd",
+  "version": "0.0.1",
+  "description": "tdd built todo list",
+  "author": "Cameron Westland <camwest@gmail.com>",
+  "engines": { "node": "> = 0.4.x < 0.8.0" },
+  "scripts": {
+    "test": "make test"
+  },
+  "devDependencies": {
+    "should": "*",
+    "mocha": "*"
+  }
+}
