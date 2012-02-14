@@ -6,22 +6,43 @@ TodoView = Backbone.View.extend({
   },
 
   events: {
-    'dblclick': function() {
-      this.$el.addClass('editing');
-      this.edit();
-    }
+    'dblclick': 'edit',
+    'click .check': function() {
+      this.model.toggle();
+    },
+
+    'keypress .todo-input': 'update',
+    'blur .todo-input': 'update'
   },
 
   edit: function() {
+    this.$el.addClass('editing');
     this.editing = true;
     this.trigger('stateChange');
   },
 
+  update: function() {
+    this.model.save({ content: this.$el.find('.todo-input').val() });
+    this.stopEditing();
+  },
+
+  stopEditing: function() {
+    this.$el.removeClass('editing');
+    this.editing = false;
+    this.trigger('stateChange');
+  },
+
   render: function() {
+    var state = "";
+
     if (this.editing) {
-      template = _.template($('#todo-edit').html());
-      this.$el.html(template(this.model.toJSON()));
+      state = "edit";
+    } else {
+      state = "normal";
     }
+
+    var template = _.template($('#todo-' + state).html());
+    this.$el.html(template(this.model.toJSON()));
 
     return this;
   }
