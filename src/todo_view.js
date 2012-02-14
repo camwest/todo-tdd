@@ -11,8 +11,15 @@ TodoView = Backbone.View.extend({
       this.model.toggle();
     },
 
-    'keypress .todo-input': 'update',
-    'blur .todo-input': 'update'
+    'keypress .todo-input': 'keyPressListener',
+    'blur .todo-input': 'update',
+    'click .todo-destroy': 'destroy'
+  },
+
+  keyPressListener: function(event) {
+    if (event.keyCode != 13) return;
+
+    this.update();
   },
 
   edit: function() {
@@ -24,6 +31,11 @@ TodoView = Backbone.View.extend({
   update: function() {
     this.model.save({ content: this.$el.find('.todo-input').val() });
     this.stopEditing();
+  },
+
+  destroy: function() {
+    this.model.clear();
+    this.remove();
   },
 
   stopEditing: function() {

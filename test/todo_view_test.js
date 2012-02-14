@@ -17,6 +17,7 @@ describe('TodoView', function() {
     sut = new TodoView();
     sut.model = {
       toggled: false,
+      cleared: false,
       content: "Hello World!",
 
       toJSON: function() {
@@ -31,6 +32,10 @@ describe('TodoView', function() {
 
       save: function(options) {
         this.content = options.content;
+      },
+
+      clear: function() {
+        this.cleared = true;
       }
     };
   });
@@ -107,13 +112,33 @@ describe('TodoView', function() {
     });
 
     describe("pressing any other key", function() {
-      it("???");
+      beforeEach(function() {
+        var input = sut.$el.find('.todo-input');
+        input.val('Hello World Other Keys!');
+        input.trigger( jQuery.Event('keypress', { keyCode: 80 }) );
+      });
+
+      it("keeps the view in editing mode", function() {
+        expect(editing()).to.be(true);
+      });
     });
   });
 
   describe("clicking destroy", function() {
-    it("clears the Todo");
-    it("removes the view from the DOM");
+    beforeEach(function() {
+      sut.render();
+      $(document.body).append(sut.el);
+
+      sut.$el.find('.todo-destroy').trigger('click');
+    });
+
+    it("clears the Todo", function() {
+      expect(sut.model.cleared).to.be(true);
+    });
+
+    it("removes the view from the DOM", function() {
+      expect($(document.body).find(sut.$el).length).to.be(0);
+    });
   });
 
 });
